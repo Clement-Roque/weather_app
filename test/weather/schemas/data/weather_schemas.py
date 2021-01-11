@@ -1,0 +1,1 @@
+basic_weather_schema: str = '{"temperature": 24}'
