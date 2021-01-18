@@ -3,15 +3,9 @@ from weather.services.weatherservice import WeatherService
 class TestWeatherService(object):
 
     def test_weather_service(self) -> None:
-        weather_service = WeatherService("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
+        weather_service = WeatherService()
 
         assert isinstance(weather_service, WeatherService)
-        assert weather_service.url == "https://meteofrance.com/previsions-meteo-france/montpellier/34000"
+        assert "get_temperature" in weather_service.__dir__()
 
-    def test_get_weather(self) -> None:
-
-        weather_service = WeatherService("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
-
-        temperature: int = weather_service.get_temperature()
-
-        assert isinstance(temperature, int)
+        assert weather_service.get_temperature() is None
