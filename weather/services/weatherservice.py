@@ -1,9 +1,9 @@
+import abc
 
 class WeatherService(object):
 
-    def __init__(self) -> None:
-        super(WeatherService, self).__init__()
+    __metaclass__ = abc.ABCMeta
 
-    def get_temperature(self) -> bool:
-
-        return False
+    @abc.abstractmethod
+    def get_temperature(self) -> int:
+        pass
