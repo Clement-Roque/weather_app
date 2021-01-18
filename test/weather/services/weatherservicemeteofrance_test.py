@@ -9,11 +9,3 @@ class TestWeatherServiceMeteoFrance(object):
         assert isinstance(weather_service_meteo_france, WeatherService)
         assert isinstance(weather_service_meteo_france, WeatherServiceMeteoFrance)
         assert weather_service_meteo_france.url == "https://meteofrance.com/previsions-meteo-france/montpellier/34000"
-
-    def test_get_temperature(self) -> None:
-
-        weather_service_meteo_france = WeatherServiceMeteoFrance()
-
-        temperature: int = weather_service_meteo_france.get_temperature()
-
-        assert isinstance(temperature, int)

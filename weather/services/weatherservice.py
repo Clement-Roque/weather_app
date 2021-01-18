@@ -1,9 +1,9 @@
 
 class WeatherService(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(WeatherService, self).__init__()
 
-    def get_temperature(self) -> int:
+    def get_temperature(self) -> bool:
 
-        pass
+        return False

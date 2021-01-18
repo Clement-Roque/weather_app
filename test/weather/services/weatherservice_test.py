@@ -8,4 +8,4 @@ class TestWeatherService(object):
         assert isinstance(weather_service, WeatherService)
         assert "get_temperature" in weather_service.__dir__()
 
-        assert weather_service.get_temperature() is None
+        assert weather_service.get_temperature() is False
