@@ -17,7 +17,7 @@ class TestWheaterSchema(object):
 
         assert weather_schema.dumps(basic_weather) == basic_weather_schema
 
-    def test_weather_schema_json_to_weather(self, basic_weather: Weather) -> None:
+    def test_weather_schema_weather_from_json(self, basic_weather: Weather) -> None:
         weather_schema: WeatherSchema = WeatherSchema()
         weather_from_json: Weather = weather_schema.loads(basic_weather_schema)
 
