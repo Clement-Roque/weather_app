@@ -17,5 +17,4 @@ class TestWeatherServiceTaMeteo(object):
 
         ta_meteo_temperature = weather_service_ta_meteo.get_temperature()
 
-        assert ta_meteo_temperature
         assert isinstance(ta_meteo_temperature, int)
