@@ -1,3 +1,4 @@
+from typing import Any
 from marshmallow import Schema, fields, post_load
 from typing import Dict, Union
 
@@ -11,3 +12,13 @@ class WeatherSchema(Schema):
     def make_weather(self: Schema, data: Dict[str, int], **kwargs: Union[str]) -> Weather:
 
         return Weather(**data)
+
+    def weather_to_json(self: Schema, weather: Weather) -> Any:
+
+        return self.dumps(weather)
+
+    def weather_from_json(self: Schema, weather_json: Any) -> Weather:
+
+        weather: Weather = self.loads(weather_json)
+
+        return weather
