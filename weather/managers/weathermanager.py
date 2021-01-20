@@ -11,8 +11,10 @@ class WeatherManager(object):
 
     def get_current_weather(self) -> Weather:
 
+        # TODO :
+        # Encapsulate the weather service choice into a dedicated element
+        # Service must return a weather dict, so
         weather_service: WeatherService = WeatherServiceTaMeteo()
-
         temperature: int = weather_service.get_temperature()
 
         raw_weather: str = json.dumps({"temperature": temperature})

@@ -1,6 +1,5 @@
-from typing import Any
 from marshmallow import Schema, fields, post_load
-from typing import Dict, Union
+from typing import Dict, Union, Any
 
 from weather.models.weather import Weather
 
