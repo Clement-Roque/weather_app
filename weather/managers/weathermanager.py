@@ -16,8 +16,7 @@ class WeatherManager(object):
         temperature: int = weather_service.get_temperature()
 
         raw_weather: str = json.dumps({"temperature": temperature})
-        weather_schema: WeatherSchema = WeatherSchema()
-        weather_from_json: Weather = weather_schema.loads(raw_weather)
+
+        weather_from_json: Weather = WeatherSchema().weather_from_json(raw_weather)
 
         return weather_from_json
-
