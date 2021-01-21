@@ -1,4 +1,3 @@
-import json
 from weather.models.weather import Weather
 from weather.services.weatherservicetameteo import WeatherServiceTaMeteo
 from weather.services.weatherservice import WeatherService
@@ -13,12 +12,9 @@ class WeatherManager(object):
 
         # TODO :
         # Encapsulate the weather service choice into a dedicated element
-        # Service must return a weather dict, so
+
         weather_service: WeatherService = WeatherServiceTaMeteo()
-        temperature: int = weather_service.get_temperature()
 
-        raw_weather: str = json.dumps({"temperature": temperature})
+        weather_from_service: Weather = WeatherSchema().weather_from_data(weather_service.get_weather_data())
 
-        weather_from_json: Weather = WeatherSchema().weather_from_json(raw_weather)
-
-        return weather_from_json
+        return weather_from_service

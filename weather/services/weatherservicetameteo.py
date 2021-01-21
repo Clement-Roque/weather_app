@@ -1,3 +1,5 @@
+from typing import Dict
+
 from weather.services.weatherservice import WeatherService
 from selenium import webdriver  # type: ignore
 
@@ -19,3 +21,11 @@ class WeatherServiceTaMeteo(WeatherService):
         ta_meteo_temperature = int(weather_temperature_from_browser.replace('°', '', 1))
 
         return ta_meteo_temperature
+
+    def get_weather_data(self) -> Dict[str, int]:
+
+        weather_data = {}
+
+        weather_data["temperature"] = self.get_temperature()
+
+        return weather_data

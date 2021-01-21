@@ -1,6 +1,5 @@
 from weather.services.weatherservice import WeatherService
 from weather.services.weatherservicetameteo import WeatherServiceTaMeteo
-from weather.schemas.weatherschema import WeatherSchema
 
 from test.weather.schemas.data.weather_schemas import weather_schema_fields
 
@@ -22,11 +21,11 @@ class TestWeatherServiceTaMeteo(object):
 
         assert isinstance(ta_meteo_temperature, int)
 
-    def test_weather_service_weather_service_ta_meteo_get_weather(self) -> None:
+    def test_weather_service_weather_service_ta_meteo_get_weather_data(self) -> None:
         weather_service_ta_meteo = WeatherServiceTaMeteo()
 
-        ta_meteo_weather = weather_service_ta_meteo.get_weather()
-        
+        ta_meteo_weather = weather_service_ta_meteo.get_weather_data()
+
         assert isinstance(ta_meteo_weather, dict)
 
-        assert weather_schema_fields == ta_meteo_weather.keys()
+        assert weather_schema_fields == list(ta_meteo_weather.keys())
