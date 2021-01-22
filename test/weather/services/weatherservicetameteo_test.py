@@ -12,6 +12,7 @@ class TestWeatherServiceTaMeteo(object):
 
         assert isinstance(weather_service_ta_meteo, WeatherService)
         assert isinstance(weather_service_ta_meteo, WeatherServiceTaMeteo)
+        assert issubclass(WeatherServiceTaMeteo, WeatherService)
         assert weather_service_ta_meteo.url == tameteo_ulr
 
     def test_weather_service_weather_service_ta_meteo_get_temperature(self) -> None:
