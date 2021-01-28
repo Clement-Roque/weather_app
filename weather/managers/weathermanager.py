@@ -1,6 +1,5 @@
 from weather.models.weather import Weather
-from weather.services.weatherservicetameteo import WeatherServiceTaMeteo
-from weather.services.weatherservice import WeatherService
+from weather.services.weatherservicefacade import WeatherServiceFacade
 from weather.schemas.weatherschema import WeatherSchema
 
 class WeatherManager(object):
@@ -10,10 +9,7 @@ class WeatherManager(object):
 
     def get_current_weather(self) -> Weather:
 
-        # TODO :
-        # Encapsulate the weather service choice into a dedicated element
-
-        weather_service: WeatherService = WeatherServiceTaMeteo()
+        weather_service: WeatherServiceFacade = WeatherServiceFacade()
 
         weather_from_service: Weather = WeatherSchema().weather_from_data(weather_service.get_weather_data())
 
