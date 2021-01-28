@@ -1,15 +1,9 @@
-import socket
-import pytest
+from pytest_socket import disable_socket, enable_socket  # type: ignore
 
 from weather.services.weatherservicefacade import WeatherServiceFacade
 from weather.services.weatherservice import WeatherService
 from test.weather.schemas.data.weather_schemas import weather_schema_fields
 
-
-@pytest.fixture
-def guard_fixture() -> None:
-    def guard() -> Exception:
-        raise Exception("I told you not to use the Internet!")
 
 class TestWeatherServiceFacade(object):
 
@@ -33,11 +27,9 @@ class TestWeatherServiceFacade(object):
 
         assert weather_schema_fields == list(facade_weather_data.keys())
 
-    def test_weather_service_facade_dont_get_weather_data(self, guard_fixture) -> None:
+    def test_weather_service_facade_dont_get_weather_data(self) -> None:
 
-        original_socket: socket.SocketType = socket.socket
-
-        socket.socket = guard_fixture  # type: ignore
+        disable_socket()
 
         weather_service_facade: WeatherServiceFacade = WeatherServiceFacade()
 
@@ -47,4 +39,4 @@ class TestWeatherServiceFacade(object):
 
         assert facade_weather_data == {}
 
-        socket.socket = original_socket
+        enable_socket()

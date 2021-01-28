@@ -9,6 +9,7 @@ mypy = "*"
 pytest-cov = "*"
 selenium = "*"
 marshmallow = "*"
+pytest-socket = "*"
 
 [dev-packages]
 
